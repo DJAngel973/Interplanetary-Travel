@@ -1,6 +1,4 @@
 
-import java.util.Scanner;
-
 /*
 * Crate the destinations of the trip, interaction of each planet
 * */
@@ -26,17 +24,7 @@ public class Planet {
     public double getDistance(){
         return distance;
     }
-    public String message(){
+    public String getMessage(){
         return message;
-    }
-
-    @Override // Overwriting the method where it is implemented shows a message
-    public String toString(){
-        return String.format("""
-                -ΩΦδ-ΩΦδ-ΩΦδ-  Planeta  -ΩΦδ-ΩΦδ-ΩΦδ-
-                Nombre = %s
-                Distancia = %.2f
-                '%s'
-                """,name, distance, message);
     }
 }
