@@ -1,3 +1,5 @@
+
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,9 +18,9 @@ public class PlanetSystem {
 
     // Adds predefined planets with distance and message
     private void planetsInitial(){
-        planets.add(new Planet("Marte", 225,"Conozcamos el planeta rojo, el cuarto planeta del sistema solar, un poco frio y desértico, con una atmosfera delgada y una superficie polvorienta."));
-        planets.add(new Planet("Júpiter", 628,"Conozcamos el planeta mas de nuestro sistema solar, el quinto en su orden, un gigante gaseoso con bandas de nubes arremolinadas, compuesto de hidrogeno y helio."));
-        planets.add(new Planet("Saturno", 1430,"Conozcamos los sorprendentes anillos brillantes del segundo planeta mas grande del sistema solar, sexto planeta compuesto principalmente de hidrogeno y helio."));
+        planets.add(new Planet("Marte", 225,"Conozcamos el planeta rojo\nEl cuarto planeta del sistema solar\nUn poco frio y desértico, con una atmosfera delgada y superficie polvorienta."));
+        planets.add(new Planet("Júpiter", 628,"Conozcamos el planeta mas grande de nuestro sistema solar\nEl quinto en su orden\nUn gigante gaseoso con bandas de nubes arremolinadas\nCompuesto de hidrogeno y helio."));
+        planets.add(new Planet("Saturno", 1430,"Conozcamos los sorprendentes anillos brillantes\nEl segundo planeta mas grande del sistema solar\nSexto planeta compuesto principalmente de hidrogeno y helio."));
     }
 
     // Returns an unmodifiable view of the planet list
@@ -29,10 +31,16 @@ public class PlanetSystem {
     // Searches for a planet by name and returns it if found
     public Planet searchPlanet(String name){
         for(Planet searchPlanetName : planets){
-            if (searchPlanetName.getName().equalsIgnoreCase(name)){
+            if (removeTilde(searchPlanetName.getName().toLowerCase())
+                    .equalsIgnoreCase(removeTilde(name.toLowerCase()))) {
                 return searchPlanetName;
             }
         }
         return null;
+    }
+    // Normaliza text by removing diacritical marks (tildes) for accent-insensitive comparisons
+    public static String removeTilde(String text){
+        return Normalizer.normalize(text, Normalizer.Form.NFD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}", "");
     }
 }
