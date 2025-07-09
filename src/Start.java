@@ -7,6 +7,10 @@ import java.util.Scanner;
 * */
 
 public class Start{
+
+    // We instantiate the class PlanetSystem
+    static PlanetSystem planetSystem = new PlanetSystem();
+
     public static void main(String[] args) {
 
         var input = new Scanner(System.in); // Take datas
@@ -33,6 +37,7 @@ public class Start{
             // The option chosen by the user is executed
             switch (option) {
                 case 1:
+                    requestRide(planetSystem);
                     break;
                 case 2:
                     break;
@@ -51,5 +56,42 @@ public class Start{
                     break;
             }
         }while(!exit);
+    }
+
+    // Request trip destination
+    public static void requestRide(PlanetSystem planetSystem){
+
+        String userPlanet;
+        var input = new Scanner(System.in);
+
+        // Select option user
+        System.out.print("""
+                -------------------------------------------
+                Nuestros destinos:
+                φ-φ-φ Marte
+                δ-δ-δ Júpiter
+                Φ-Φ-Φ Saturno
+                Escribe el planeta donde quieres ir: """);
+        userPlanet = input.nextLine();
+
+        //
+        Planet option = planetSystem.searchPlanet(userPlanet);
+
+        // Verify option user
+        if (option != null){
+            System.out.printf("""
+                            -------------------------------------------
+                            -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ
+                            
+                            %s
+                            Con una distancia promedio de %.2f millones de kilómetros
+                            %s
+                            
+                            -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ
+                            -------------------------------------------
+                            """, option.getName(), option.getDistance(), option.getMessage());
+        }else{
+            System.out.println("El planeta ingresado no existe.");
+        }
     }
 }
