@@ -18,9 +18,9 @@ public class PlanetSystem {
 
     // Adds predefined planets with distance and message
     private void planetsInitial(){
-        planets.add(new Planet("Marte", 225,"Conozcamos el planeta rojo\nEl cuarto planeta del sistema solar\nUn poco frio y desértico, con una atmosfera delgada y superficie polvorienta."));
-        planets.add(new Planet("Júpiter", 628,"Conozcamos el planeta mas grande de nuestro sistema solar\nEl quinto en su orden\nUn gigante gaseoso con bandas de nubes arremolinadas\nCompuesto de hidrogeno y helio."));
-        planets.add(new Planet("Saturno", 1430,"Conozcamos los sorprendentes anillos brillantes\nEl segundo planeta mas grande del sistema solar\nSexto planeta compuesto principalmente de hidrogeno y helio."));
+        planets.add(new Planet("Marte", 225.00,"Conozcamos el planeta rojo\nEl cuarto planeta del sistema solar\nUn poco frio y desértico, con una atmosfera delgada y superficie polvorienta."));
+        planets.add(new Planet("Júpiter", 628.00,"Conozcamos el planeta mas grande de nuestro sistema solar\nEl quinto en su orden\nUn gigante gaseoso con bandas de nubes arremolinadas\nCompuesto de hidrogeno y helio."));
+        planets.add(new Planet("Saturno", 1430.00,"Conozcamos los sorprendentes anillos brillantes\nEl segundo planeta mas grande del sistema solar\nSexto planeta compuesto principalmente de hidrogeno y helio."));
     }
 
     // Returns an unmodifiable view of the planet list
