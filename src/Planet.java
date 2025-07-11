@@ -7,11 +7,11 @@ public class Planet {
 
     // Attributes
     private String name;
-    private double distance; // Distance from Earth
+    private Double distance; // Distance from Earth
     private String message; // Message of planet
 
     // Builder to initialize attributes
-    public Planet(String name, double distance, String message){
+    public Planet(String name, Double distance, String message){
         this.name = name;
         this.distance = distance;
         this.message = message;
@@ -21,7 +21,7 @@ public class Planet {
     public String getName(){
         return name;
     }
-    public double getDistance(){
+    public Double getDistance(){
         return distance;
     }
     public String getMessage(){
