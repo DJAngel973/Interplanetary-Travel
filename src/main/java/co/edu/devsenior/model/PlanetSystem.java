@@ -1,5 +1,4 @@
-
-import main.java.co.edu.devsenior.model.Planet;
+package main.java.co.edu.devsenior.model;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
