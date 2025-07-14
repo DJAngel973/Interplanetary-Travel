@@ -1,4 +1,4 @@
-
+package main.java.co.edu.devsenior.model;
 /*
 * Crate the destinations of the trip, interaction of each planet
 * */

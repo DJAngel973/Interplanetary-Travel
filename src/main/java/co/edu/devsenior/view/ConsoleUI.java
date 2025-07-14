@@ -1,4 +1,6 @@
+package main.java.co.edu.devsenior.view;
 
+import main.java.co.edu.devsenior.model.Planet;
 import java.util.Scanner;
 
 /*
@@ -8,7 +10,7 @@ import java.util.Scanner;
 
 public class Start{
 
-    // We instantiate the class PlanetSystem
+    // We instantiate the class main.java.co.edu.devsenior.model.PlanetSystem
     static PlanetSystem planetSystem = new PlanetSystem();
 
     public static void main(String[] args) {
