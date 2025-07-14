@@ -4,24 +4,17 @@ import main.java.co.edu.devsenior.model.Planet;
 import java.util.Scanner;
 
 /*
-* Menu for initial user interaction.You can choose the action you want to perform
-* (select a planet, choose a ship, start the journey, or exit the program)
+* Menus for user interaction and data entry
 * */
 
-public class Start{
+public class ConsoleUI {
 
-    // We instantiate the class main.java.co.edu.devsenior.model.PlanetSystem
-    static PlanetSystem planetSystem = new PlanetSystem();
+    // Create variable for take data user
+    private final Scanner input = new Scanner (System.in);
 
-    public static void main(String[] args) {
-
-        var input = new Scanner(System.in); // Take datas
-        boolean exit = false;
-        int option;
-
-        // Main menu
-        do{
-            System.out.print("""
+    // Method for show menu at user
+    public void showMenu(){
+        System.out.print("""
                     -------------------------------------------
                     ΩΦδΩΦδΩΦδΩΦδΩΦδ Bienvenidos ΩΦδΩΦδΩΦδΩΦδΩΦδ
                     -------------------------------------------
@@ -33,40 +26,15 @@ public class Start{
                     4. Salir
                     -------------------------------------------
                     Escoge una opción: """);
-            option = input.nextInt();
-            input.nextLine();
-
-            // The option chosen by the user is executed
-            switch (option) {
-                case 1:
-                    requestRide(planetSystem);
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    // Exit menu
-                    exit = true;
-                    System.out.println("-------------------------------------------");
-                    System.out.println("-Ω-Φ-δ-Ω- Gracias por participar. -Ω-Φ-δ-Ω-");
-                    break;
-                default:
-                    // Incorrectly entered data, then the data is requested again
-                    System.out.println("-------------------------------------------");
-                    System.out.println("-Ω-Φ-δ-Ω Ingresa una opción valida -Ω-Φ-δ-Ω");
-                    break;
-            }
-        }while(!exit);
     }
 
-    // Request trip destination
-    public static void requestRide(PlanetSystem planetSystem){
+    // Method for take the option of menu user
+    public int readOptionMenu(){
+        return input.nextInt();
+    }
 
-        String userPlanet;
-        var input = new Scanner(System.in);
-
-        // Select option user
+    // Method for take planet
+    public String readNamePlanet(){
         System.out.print("""
                 -------------------------------------------
                 Nuestros destinos:
@@ -74,14 +42,13 @@ public class Start{
                 δ-δ-δ Júpiter
                 Φ-Φ-Φ Saturno
                 Escribe el planeta donde quieres ir: """);
-        userPlanet = input.nextLine();
+        input.nextLine(); // Clear buffer
+        return input.nextLine();
+    }
 
-        //
-        Planet option = planetSystem.searchPlanet(userPlanet);
-
-        // Verify option user
-        if (option != null){
-            System.out.printf("""
+    // Method for show characteristics of planet
+    public void showPlanet(Planet planet){
+        System.out.printf("""
                             -------------------------------------------
                             -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ
                             
@@ -91,9 +58,17 @@ public class Start{
                             
                             -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ -φ-δ-Φ
                             -------------------------------------------
-                            """, option.getName(), option.getDistance(), option.getMessage());
-        }else{
-            System.out.println("El planeta ingresado no existe.");
-        }
+                            """, planet.getName(), planet.getDistance(), planet.getMessage());
+    }
+
+    // Method message of error
+    public void showError(String messageError){
+        System.out.println(" " + messageError);
+    }
+
+    // Method for message of exit project
+    public void exit(){
+        System.out.println("-------------------------------------------");
+        System.out.println("-Ω-Φ-δ-Ω- Gracias por participar. -Ω-Φ-δ-Ω-");
     }
 }
