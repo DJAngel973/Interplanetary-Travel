@@ -11,13 +11,15 @@ public class PlanetController {
     private final ConsoleUI ui;
 
     // Constructor
+    // Create depends on model and view
    public PlanetController(){
        this.planetSystem = new PlanetSystem();
        this.ui = new ConsoleUI();
    }
 
    // Method to start
-    public void start(){
+   // Controller the flow of primary menu
+   public void start(){
        boolean exit = false;
        int option;
 
@@ -36,10 +38,11 @@ public class PlanetController {
                default -> ui.showError("Opción no valida");
            }
        }while (!exit);
-    }
+   }
 
-    // Request destination for trip
-    public void requestDestination(){
+   // Request destination for trip
+   // Divide responsibilities into entry, business logic, and exit layers
+   public void requestDestination(){
 
        String namePlanet = ui.readNamePlanet();
        Planet planet = planetSystem.searchPlanet(namePlanet);
@@ -48,5 +51,5 @@ public class PlanetController {
        }else{
            ui.showError("El planeta ingresado no existe.");
        }
-    }
+   }
 }
