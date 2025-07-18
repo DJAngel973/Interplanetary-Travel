@@ -1,7 +1,6 @@
 package main.java.co.edu.devsenior.controller;
 
-import main.java.co.edu.devsenior.model.Planet;
-import main.java.co.edu.devsenior.model.PlanetSystem;
+import main.java.co.edu.devsenior.model.*;
 import main.java.co.edu.devsenior.view.ConsoleUI;
 
 public class PlanetController {
@@ -9,17 +8,21 @@ public class PlanetController {
     // Attributes
     private final PlanetSystem planetSystem;
     private final ConsoleUI ui;
+    private final SpacecraftService spacecraftService;
+    private Planet selectPlanet;
+    private Spacecraft selectedCraft;
 
     // Constructor
     // Create depends on model and view
-   public PlanetController(){
+    public PlanetController(){
        this.planetSystem = new PlanetSystem();
        this.ui = new ConsoleUI();
-   }
+       this.spacecraftService = new SpacecraftService();
+    }
 
-   // Method to start
-   // Controller the flow of primary menu
-   public void start(){
+    // Method to start
+    // Controller the flow of primary menu
+    public void start(){
        boolean exit = false;
        int option;
 
@@ -29,7 +32,7 @@ public class PlanetController {
 
            switch (option){
                case 1 -> requestDestination();
-               case 2 -> {}
+               case 2 -> requestSpacecraft();
                case 3 -> {}
                case 4 -> {
                    exit = true;
@@ -38,18 +41,45 @@ public class PlanetController {
                default -> ui.showError("Opción no valida");
            }
        }while (!exit);
-   }
+    }
 
-   // Request destination for trip
-   // Divide responsibilities into entry, business logic, and exit layers
-   public void requestDestination(){
+    // Request destination for trip
+    // Divide responsibilities into entry, business logic, and exit layers
+    public void requestDestination(){
 
        String namePlanet = ui.readNamePlanet();
        Planet planet = planetSystem.searchPlanet(namePlanet);
        if (planet != null) {
+           selectPlanet = planet; // We keep the planet admitted to interact with it
            ui.showPlanet(planet);
        }else{
            ui.showError("El planeta ingresado no existe.");
        }
-   }
+    }
+
+    // Method to request the Spacecraft
+    public void requestSpacecraft(){
+
+        // We verify that the user has chosen a planet
+        if (selectPlanet != null ) {
+            Integer option = ui.spacecraft(); // We show the menu of the spacecraft
+
+            // The value is taken to choose the spacecraft
+            switch (option){
+                case 1 -> selectedCraft = new Ractor();
+                case 2 -> selectedCraft = new Sultan();
+                case 3 -> selectedCraft = new Orus();
+                default -> {
+                    ui.showError("Opción invalida.");
+                }
+            }
+            // The number of people is taken
+            int passengerCount = ui.requestPeople();
+            String result = spacecraftService.assignPassengers(selectedCraft, passengerCount);
+            ui.showMessage(result);
+        }else{
+            ui.showError("Debes solicitar el viaje destino primero.");
+
+        }
+    }
 }
