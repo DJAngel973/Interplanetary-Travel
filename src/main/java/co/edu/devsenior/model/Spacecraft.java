@@ -27,4 +27,9 @@ public class Spacecraft {
     public Integer getPeopleMax(){
         return peopleMax;
     }
+
+    // Setter
+    public void setPeople(Integer people){
+        this.people = people;
+    }
 }
