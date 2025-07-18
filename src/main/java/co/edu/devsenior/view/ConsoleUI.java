@@ -71,4 +71,40 @@ public class ConsoleUI {
         System.out.println("-------------------------------------------");
         System.out.println("-Ω-Φ-δ-Ω- Gracias por participar. -Ω-Φ-δ-Ω-");
     }
+
+    // Method of message from spacecraft available for travel
+    public int spacecraft(){
+
+        int option;
+        System.out.println("""
+                -------------------------------------------
+                -Ω-Φ-δ-Ω-Φ- Naves disponibles:   -Ω-Φ-δ-Ω-Φ
+                
+                1. Ractor
+                🚀 Velocidad maxima 385 km/h
+                🙍 Capacidad 10 pasajeros
+                
+                2. Sultan
+                🚀 Velocidad maxima 315 km/h
+                🙍 Capacidad 15 pasajeros
+                
+                3. Orus
+                🚀 Velocidad maxima 270 km/h
+                🙍 Capacidad 25 pasajeros
+                
+                Escoge la nave espacial:
+                """);
+        return input.nextInt();
+    }
+
+    // Method to request number of people
+    public int requestPeople(){
+        System.out.print("Ingresa número de personas para el viaje: ");
+        return input.nextInt();
+    }
+
+    // Method message
+    public void showMessage(String message){
+        System.out.println(message);
+    }
 }
