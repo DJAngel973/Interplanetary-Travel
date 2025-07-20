@@ -4,6 +4,6 @@ public class Orus extends Spacecraft {
 
     // Constructor
     public Orus(){
-        super(270.00, 0, 25);
+        super("Orus",270.00, 0, 25);
     }
 }

@@ -4,6 +4,6 @@ public class Ractor extends Spacecraft{
 
     // Constructor
     public Ractor(){
-        super(385.00, 0, 10);
+        super("Ractor",385.00, 0, 10);
     }
 }

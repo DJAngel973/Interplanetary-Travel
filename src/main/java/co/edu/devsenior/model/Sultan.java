@@ -4,6 +4,6 @@ public class Sultan extends Spacecraft{
 
     // Constructor
     public Sultan(){
-        super(315.00, 0, 15);
+        super("Sultan",315.00, 0, 15);
     }
 }
