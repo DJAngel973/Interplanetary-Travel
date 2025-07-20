@@ -107,4 +107,13 @@ public class ConsoleUI {
     public void showMessage(String message){
         System.out.println(message);
     }
+
+    // Method to request number of people
+    public int errorPeople(){
+        System.out.print("""
+                    El número de personas no permitido.
+                    ingresa un número correcto:
+                    """);
+        return input.nextInt();
+    }
 }
