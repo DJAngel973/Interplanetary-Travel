@@ -77,9 +77,11 @@ public class PlanetController {
             int passengerCount = ui.requestPeople();
             String result = spacecraftService.assignPassengers(selectedCraft, passengerCount);
             ui.showMessage(result);
+            // Message distance trip
+            String travelMessage = spacecraftService.timeTrip(selectedCraft, selectPlanet);
+            ui.showMessage(travelMessage);
         }else{
             ui.showError("Debes solicitar el viaje destino primero.");
-
         }
     }
 }

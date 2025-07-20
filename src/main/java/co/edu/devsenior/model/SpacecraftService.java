@@ -24,4 +24,15 @@ public class SpacecraftService {
         spacecraft.setPeople(numberPeople);
         return String.format("Pasajeros ingresados (%d) a la nave %s ", spacecraft.getPeople(), spacecraft.getName());
     }
+    // Method calculate time of trip
+    public String timeTrip(Spacecraft spacecraft, Planet planet){
+
+        // data speed formula
+        double distanceMill = planet.getDistance() * 1_000_000;
+        double time = distanceMill / spacecraft.getSpeed();
+        time /= 24;
+
+        // Message
+        return String.format("El viaje para %s durara %.0f dias", planet.getName(), time);
+    }
 }
