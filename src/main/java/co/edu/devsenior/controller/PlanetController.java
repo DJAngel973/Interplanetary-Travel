@@ -9,6 +9,7 @@ public class PlanetController {
     private final PlanetSystem planetSystem;
     private final ConsoleUI ui;
     private final SpacecraftService spacecraftService;
+    private final SimulationTripService simulationTripService;
     private Planet selectPlanet;
     private Spacecraft selectedCraft;
 
@@ -18,6 +19,7 @@ public class PlanetController {
        this.planetSystem = new PlanetSystem();
        this.ui = new ConsoleUI();
        this.spacecraftService = new SpacecraftService();
+       this.simulationTripService = new SimulationTripService();
     }
 
     // Method to start
@@ -33,7 +35,7 @@ public class PlanetController {
            switch (option){
                case 1 -> requestDestination();
                case 2 -> requestSpacecraft();
-               case 3 -> {}
+               case 3 -> simulationTrip();
                case 4 -> {
                    exit = true;
                    ui.exit();
@@ -62,7 +64,7 @@ public class PlanetController {
 
         // We verify that the user has chosen a planet
         if (selectPlanet != null ) {
-            Integer option = ui.spacecraft(); // We show the menu of the spacecraft
+            int option = ui.spacecraft(); // We show the menu of the spacecraft
 
             // The value is taken to choose the spacecraft
             switch (option){
@@ -82,6 +84,16 @@ public class PlanetController {
             ui.showMessage(travelMessage);
         }else{
             ui.showError("Debes solicitar el viaje destino primero.");
+        }
+    }
+
+    // Method trip simulation
+    public void simulationTrip(){
+
+        if (selectPlanet != null && selectedCraft != null){
+            simulationTripService.travel(selectPlanet.getName(), selectedCraft);
+        }else{
+            ui.showError("Debes escoger el viaje y seleccionar la nave para poder comenzar con la simulación.");
         }
     }
 }
